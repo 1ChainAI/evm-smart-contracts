@@ -4,7 +4,7 @@
 
 ### Deployed contracts
 
-- Titan AI Hub Testnet: 0xB73D3C241BCE5DE2cb05115d8f810Ec6725dA976
+- Titan AI Hub Testnet: 0x9950A6Ff4a68C8c02B563605d5c95B7302076f17
 
 ### Useful links
 
