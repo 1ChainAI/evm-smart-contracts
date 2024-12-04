@@ -1,10 +1,16 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.24;
 
-contract MemoContract {
+import "@openzeppelin/contracts/access/AccessControl.sol";
+
+contract MemoContract is AccessControl {
+
+    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
+    bytes32 public constant MEMO_ROLE = keccak256("MEMO_ROLE");
+
     struct Memo {
         address sender;
-        uint256 timestamp;
+        uint64 timestamp;
         string message;
     }
 
@@ -12,12 +18,16 @@ contract MemoContract {
     mapping(uint256 => Memo) public memos;
 
     constructor() {
-        memoCounter = 0;
+        _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
     }
 
-    function sendMemo(string memory _message) public {
+    function sendMemo(string memory _message) external onlyRole(MEMO_ROLE) {
         memoCounter++;
+        memos[memoCounter] = Memo(_msgSender(), uint64(block.timestamp), _message);
+        renounceRole(MEMO_ROLE, _msgSender());
+    }
 
-        memos[memoCounter] = Memo(msg.sender, block.timestamp, _message);
+    function setMemoRole(address newSender) external onlyRole(ADMIN_ROLE) {
+        grantRole(MEMO_ROLE, newSender);
     }
 }
