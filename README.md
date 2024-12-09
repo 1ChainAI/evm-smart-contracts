@@ -4,7 +4,7 @@
 
 ### Deployed contracts
 
-- Titan AI Hub Testnet: [0xF0689F6dAA54f8650666739Ce9f846e8e3f74931](https://aware-fake-trim-testnet.explorer.testnet.skalenodes.com/address/0xF0689F6dAA54f8650666739Ce9f846e8e3f74931)
+- Titan AI Hub Testnet: [0xe9E1de95e743d0Cc895B9121E226C5eBC01C5c8F](https://aware-fake-trim-testnet.explorer.testnet.skalenodes.com/address/0xe9E1de95e743d0Cc895B9121E226C5eBC01C5c8F)
 
 ### Useful links
 

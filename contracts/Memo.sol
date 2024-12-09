@@ -23,6 +23,6 @@ contract MemoContract is AccessControl {
     }
 
     function setMemoRole(address newSender) external onlyRole(ADMIN_ROLE) {
-        grantRole(MEMO_ROLE, newSender);
+        _grantRole(MEMO_ROLE, newSender);
     }
 }
