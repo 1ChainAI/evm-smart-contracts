@@ -8,7 +8,7 @@ contract MemoContract is AccessControl {
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant MEMO_ROLE = keccak256("MEMO_ROLE");
 
-    event MemoSent(uint256 indexed memoId, address indexed sender, uint64 timestamp, string message);
+    event MemoSent(uint256 indexed memoId, address indexed sender, uint64 timestamp, string question, string response);
 
     uint256 memoCounter;
 
@@ -17,8 +17,8 @@ contract MemoContract is AccessControl {
         _grantRole(ADMIN_ROLE, _msgSender());
     }
 
-    function sendMemo(string memory _message) external onlyRole(MEMO_ROLE) {
-        emit MemoSent(memoCounter++, _msgSender(), uint64(block.timestamp), _message);
+    function sendMemo(string memory question, string memory response) external onlyRole(MEMO_ROLE) {
+        emit MemoSent(memoCounter++, _msgSender(), uint64(block.timestamp), question, response);
         renounceRole(MEMO_ROLE, _msgSender());
     }
 
